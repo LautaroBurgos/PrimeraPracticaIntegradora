@@ -1,0 +1,30 @@
+
+
+<h1>Lista de Productos en Tiempo Real</h1>
+
+<ul id="product-list">
+  {{#each products.payload}}
+    <div>
+      <h3 style="color: green;">{{this.title}}</h3>
+      <p><strong>Precio:</strong> {{this.price}}</p>
+      <p><strong>Categoria:</strong> {{this.category}}</p>
+      <button class="btn_delete" data-producto-id={{this.id}}>ELIMINAR</button>
+    </div>
+  {{/each}}
+</ul>
+
+<form id="productForm">
+  <label for="newProductName">Nombre:</label>
+  <input type="text" id="newProductName" name="newProductName" required />
+
+  <label for="newProductPrice">Precio:</label>
+  <input type="number" id="newProductPrice" name="newProductPrice" required />
+
+  <label for="newProductCategory">Categoría:</label>
+  <input type="text" id="newProductCategory" name="newProductCategory" required/>
+
+  <button id="realtimeAddProduct" type="button" >Agregar Producto</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/src/public/js/index.js"></script>
